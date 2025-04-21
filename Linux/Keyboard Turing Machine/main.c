@@ -17,7 +17,7 @@
 #include <linux/cdev.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Claude");
+MODULE_AUTHOR("Shivani");
 MODULE_DESCRIPTION("Keyboard Turing Machine Device Driver");
 MODULE_VERSION("0.1");
 
