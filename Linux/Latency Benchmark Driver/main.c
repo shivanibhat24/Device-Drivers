@@ -34,7 +34,7 @@
 #define MAX_IRQ_NAME_LEN 32
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Claude");
+MODULE_AUTHOR("Shivani");
 MODULE_DESCRIPTION("High-Resolution Interrupt Latency Benchmark Driver");
 MODULE_VERSION("1.0");
 
