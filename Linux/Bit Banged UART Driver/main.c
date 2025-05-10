@@ -1,7 +1,6 @@
 /*
  * Bit-Banged UART Driver
  * Using hrtimer and GPIO to emulate UART functionality
- * Author: Claude
  */
 
 #include <linux/module.h>
