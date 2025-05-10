@@ -30,8 +30,6 @@
 #define VFSVER_VERSION_SUFFIX ".v"
 
 /* Module information */
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Claude");
 MODULE_DESCRIPTION("Filesystem with version control capabilities");
 MODULE_VERSION(VFSVER_VERSION);
 
