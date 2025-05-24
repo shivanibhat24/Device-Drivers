@@ -350,17 +350,6 @@ sudo make uninstall
 make clean
 ```
 
-## License
-
-GPL v2 - See source files for full license text.
-
-## Contributing
-
-1. Fork the repository
-2. Create feature branch
-3. Make changes with appropriate testing
-4. Submit pull request
-
 ## Troubleshooting
 
 ### Module won't load
