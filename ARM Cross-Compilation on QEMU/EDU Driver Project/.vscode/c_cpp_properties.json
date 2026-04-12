@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "name": "Linux ARM64 Kernel",
+      "includePath": [
+        "${env:HOME}/linux/include",
+        "${env:HOME}/linux/arch/arm64/include",
+        "${env:HOME}/linux/arch/arm64/include/generated",
+        "${env:HOME}/linux/include/uapi",
+        "${env:HOME}/linux/arch/arm64/include/uapi",
+        "${workspaceFolder}/driver"
+      ],
+      "defines": [
+        "__KERNEL__",
+        "__linux__",
+        "MODULE",
+        "KBUILD_MODNAME=\"edu_driver\""
+      ],
+      "compilerPath": "/usr/bin/aarch64-linux-gnu-gcc",
+      "cStandard": "gnu11",
+      "intelliSenseMode": "linux-gcc-arm64",
+      "compilerArgs": [
+        "-nostdinc"
+      ]
+    }
+  ],
+  "version": 4
+}
