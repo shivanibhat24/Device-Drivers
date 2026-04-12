@@ -1,0 +1,35 @@
+# Kernel module build artifacts
+driver/*.o
+driver/*.ko
+driver/*.mod
+driver/*.mod.c
+driver/*.mod.o
+driver/.*.cmd
+driver/modules.order
+driver/Module.symvers
+driver/.tmp_versions/
+driver/test_edu
+
+# Kernel build
+*.o
+*.ko
+*.mod
+*.mod.c
+*.mod.o
+.*.cmd
+modules.order
+Module.symvers
+.tmp_versions/
+
+# SSH keys — never commit private keys
+*.ssh/qemu_guest
+*.pem
+
+# Initramfs and kernel images
+*.cpio.gz
+Image
+
+# Editor
+.DS_Store
+*.swp
+*.swo
