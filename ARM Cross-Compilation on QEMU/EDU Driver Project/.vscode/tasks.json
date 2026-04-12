@@ -1,0 +1,58 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build kernel module",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "KDIR=${env:HOME}/linux",
+        "ARCH=arm64",
+        "CROSS_COMPILE=aarch64-linux-gnu-"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/driver"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Full build + pack initramfs",
+      "type": "shell",
+      "command": "bash ${workspaceFolder}/scripts/build.sh",
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Copy module to guest",
+      "type": "shell",
+      "command": "scp -P 2222 -i ~/.ssh/qemu_guest -o StrictHostKeyChecking=no driver/edu_driver.ko root@localhost:/lib/modules/",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Reload module in guest",
+      "type": "shell",
+      "command": "ssh -p 2222 -i ~/.ssh/qemu_guest -o StrictHostKeyChecking=no root@localhost 'rmmod edu_driver 2>/dev/null; insmod /lib/modules/edu_driver.ko && echo OK'",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
