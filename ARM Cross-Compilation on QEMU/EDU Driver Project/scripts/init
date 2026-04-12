@@ -1,0 +1,46 @@
+#!/bin/sh
+# init — First userspace process launched by the Linux kernel
+# This script runs as PID 1 inside the QEMU ARM64 guest
+
+# Mount essential virtual filesystems
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devtmpfs none /dev
+
+# Bring up the virtual network interface
+# QEMU user-mode networking provides 10.0.2.x
+ip link set eth0 up
+ip addr add 10.0.2.15/24 dev eth0
+ip route add default via 10.0.2.2
+
+# SSH setup
+mkdir -p /etc/dropbear /root/.ssh /var/run /var/log
+chmod 700 /root/.ssh
+
+# authorized_keys is baked in at initramfs build time
+chmod 600 /root/.ssh/authorized_keys 2>/dev/null
+
+# Generate SSH host key (only on first boot — takes ~10s)
+if [ ! -f /etc/dropbear/dropbear_rsa_host_key ]; then
+    echo "Generating SSH host key (first boot)..."
+    dropbearkey -t rsa -f /etc/dropbear/dropbear_rsa_host_key
+fi
+
+# Start Dropbear SSH server
+dropbear -E -R -p 22
+sleep 1
+
+# Load the EDU kernel driver
+insmod /lib/modules/edu_driver.ko 2>/dev/null \
+    && echo "EDU driver loaded — /dev/edu0 ready" \
+    || echo "EDU driver not found (copy edu_driver.ko to /lib/modules/)"
+
+echo ""
+echo "======================================="
+echo "  Boot complete. SSH ready on port 22."
+echo "  Connect: ssh -p 2222 root@localhost"
+echo "======================================="
+echo ""
+
+# Drop into interactive shell
+exec /bin/sh
