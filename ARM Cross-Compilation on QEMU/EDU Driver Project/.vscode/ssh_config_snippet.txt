@@ -1,0 +1,13 @@
+# ~/.ssh/config — Add this to your Windows SSH config
+# Location: C:\Users\<YourName>\.ssh\config
+#
+# Allows VS Code Remote-SSH to connect directly into the
+# running QEMU ARM64 guest via port forwarding.
+
+Host qemu-guest
+    HostName localhost
+    Port 2222
+    User root
+    IdentityFile ~/.ssh/qemu_guest
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
