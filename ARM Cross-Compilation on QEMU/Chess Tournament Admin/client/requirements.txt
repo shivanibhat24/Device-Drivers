@@ -1,0 +1,7 @@
+python-chess>=1.999
+requests>=2.31
+openai-whisper>=20231117
+sounddevice>=0.4.6
+numpy>=1.24
+scipy>=1.11
+pygame>=2.5
