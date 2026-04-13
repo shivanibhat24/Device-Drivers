@@ -1,0 +1,28 @@
+# Build artifacts
+server/chess_server
+server/chess_server_native
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Whisper model cache
+~/.cache/whisper/
+
+# Engine downloads
+/tmp/chess_engine*/
+
+# Buildroot (don't commit the whole thing)
+*.tar.gz
+*.ext2
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
