@@ -1,0 +1,18 @@
+# Arduino build artifacts
+build/
+*.bin
+*.elf
+*.map
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.vscode/
+*.DS_Store
+
+# Secrets (never commit WiFi creds)
+src/system/secrets.h
