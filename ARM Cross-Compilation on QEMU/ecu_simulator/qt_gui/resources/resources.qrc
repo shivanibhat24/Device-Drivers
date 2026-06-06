@@ -1,0 +1,16 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <!--
+        ECU Simulator Qt Resources
+        
+        Currently empty — all UI is drawn procedurally with QPainter.
+        Add icon files here when needed:
+        
+        <qresource prefix="/icons">
+            <file>icons/warning.png</file>
+            <file>icons/engine.png</file>
+        </qresource>
+    -->
+    <qresource prefix="/">
+    </qresource>
+</RCC>

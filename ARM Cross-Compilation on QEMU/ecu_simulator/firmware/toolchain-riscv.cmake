@@ -1,0 +1,21 @@
+# toolchain-riscv.cmake
+# Usage: cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain-riscv.cmake ..
+
+set(CMAKE_SYSTEM_NAME      Generic)
+set(CMAKE_SYSTEM_PROCESSOR riscv64)
+
+# Adjust prefix if your toolchain is installed differently
+set(TOOLCHAIN_PREFIX "riscv64-unknown-elf-")
+
+find_program(CMAKE_C_COMPILER   ${TOOLCHAIN_PREFIX}gcc   REQUIRED)
+find_program(CMAKE_CXX_COMPILER ${TOOLCHAIN_PREFIX}g++   REQUIRED)
+find_program(CMAKE_ASM_COMPILER ${TOOLCHAIN_PREFIX}gcc   REQUIRED)
+find_program(CMAKE_OBJCOPY      ${TOOLCHAIN_PREFIX}objcopy REQUIRED)
+find_program(CMAKE_SIZE         ${TOOLCHAIN_PREFIX}size    REQUIRED)
+
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
